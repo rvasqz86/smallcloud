@@ -129,6 +129,12 @@ export function buildServer(): McpServer {
   return server;
 }
 
+/** Starts the stdio MCP server (called by the packaged launcher or the gate below). */
+export async function main(): Promise<void> {
+  const server = buildServer();
+  await server.connect(new StdioServerTransport());
+}
+
 const entrypoint = process.argv[1];
 let isMain = false;
 try {
@@ -141,6 +147,5 @@ try {
   isMain = false;
 }
 if (isMain) {
-  const server = buildServer();
-  await server.connect(new StdioServerTransport());
+  await main();
 }

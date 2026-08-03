@@ -12,7 +12,7 @@
  *
  * Run: node packages/smallcloud/build.mjs   (repo must be pnpm-built first)
  */
-import { chmodSync, copyFileSync, mkdirSync, rmSync } from "node:fs";
+import { chmodSync, copyFileSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
@@ -34,17 +34,39 @@ const common = {
   minify: false,
 };
 
-await build({
-  ...common,
-  entryPoints: [join(REPO, "packages/cli/src/index.ts")],
-  outfile: join(PKG, "bin/smallcloud.js"),
-});
+/**
+ * Bins are a launcher + implementation pair: the launcher silences Node's
+ * SQLite ExperimentalWarning (which fires at module load, before any code in
+ * the same file could) and then imports the real bundle.
+ */
+const LAUNCHER = (impl, invoke) => `#!/usr/bin/env node
+const origEmit = process.emitWarning;
+process.emitWarning = function (warning, ...args) {
+  const text = String(typeof warning === "object" ? warning?.message : warning);
+  const type = typeof args[0] === "string" ? args[0] : args[0]?.type;
+  const name = typeof warning === "object" ? warning?.name : undefined;
+  if ((type === "ExperimentalWarning" || name === "ExperimentalWarning") && text.includes("SQLite")) return;
+  return origEmit.call(process, warning, ...args);
+};
+const mod = await import("./${impl}");
+${invoke}
+`;
 
-await build({
-  ...common,
-  entryPoints: [join(REPO, "packages/mcp-server/src/index.ts")],
-  outfile: join(PKG, "bin/smallcloud-mcp.js"),
-});
+async function buildBin(entry, name, invoke) {
+  await build({
+    ...common,
+    entryPoints: [join(REPO, entry)],
+    outfile: join(PKG, `bin/_${name}-impl.js`),
+  });
+  writeFileSync(join(PKG, `bin/${name}.js`), LAUNCHER(`_${name}-impl.js`, invoke));
+}
+
+await buildBin(
+  "packages/cli/src/index.ts",
+  "smallcloud",
+  "process.exitCode = await mod.run(process.argv.slice(2));",
+);
+await buildBin("packages/mcp-server/src/index.ts", "smallcloud-mcp", "await mod.main();");
 
 for (const entry of ["authproxy-entry", "waker-entry", "egress-entry"]) {
   await build({

@@ -23,13 +23,13 @@ beforeAll(() => {
   rmSync(APP_DIR, { recursive: true, force: true });
   run("node", [join(PKG, "build.mjs")]);
   run("npm", ["pack", "--silent"], PKG);
-  run("npm", ["install", "-g", "--prefix", PREFIX, join(PKG, "rvasqz86-smallcloud-0.1.0.tgz")]);
+  run("npm", ["install", "-g", "--prefix", PREFIX, join(PKG, "rvasqz86-smallcloud-0.1.1.tgz")]);
 }, 300_000);
 
 afterAll(() => {
   rmSync(PREFIX, { recursive: true, force: true });
   rmSync(APP_DIR, { recursive: true, force: true });
-  rmSync(join(PKG, "rvasqz86-smallcloud-0.1.0.tgz"), { force: true });
+  rmSync(join(PKG, "rvasqz86-smallcloud-0.1.1.tgz"), { force: true });
 }, 60_000);
 
 describe("npm-installed smallcloud", () => {

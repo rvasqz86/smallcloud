@@ -233,8 +233,12 @@ function cmdList(): number {
     out("No apps yet. Deploy one with: smallcloud deploy");
     return 0;
   }
+  const nameWidth = Math.max(...apps.map(({ app }) => app.name.length));
+  const statusWidth = Math.max(...apps.map(({ deployment }) => (deployment?.status ?? "-").length));
   for (const { app, deployment } of apps) {
-    out(`${app.name.padEnd(24)} ${(deployment?.status ?? "-").padEnd(10)} ${deployment?.url ?? ""}`);
+    out(
+      `${app.name.padEnd(nameWidth)}  ${(deployment?.status ?? "-").padEnd(statusWidth)}  ${deployment?.url ?? ""}`,
+    );
   }
   return 0;
 }
