@@ -69,6 +69,7 @@ function layout(page) {
   <a href="/docs/quickstart.html">Docs</a>
   <a href="/faq.html">FAQ</a>
   <a href="/changelog.html">Changelog</a>
+  <a href="https://github.com/rvasqz86/smallcloud">Source</a>
 </nav></header>
 <main>
 ${page.body.trim()}

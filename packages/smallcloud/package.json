@@ -33,5 +33,12 @@
   "homepage": "https://smallcloud.osita.ai",
   "scripts": {
     "bundle": "node build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvasqz86/smallcloud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rvasqz86/smallcloud/issues"
   }
 }
