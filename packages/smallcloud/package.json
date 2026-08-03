@@ -1,0 +1,37 @@
+{
+  "name": "@rvasqz86/smallcloud",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Self-hosted cloud for small software: deploy static sites and Node.js apps to private, sandboxed, magic-link-protected HTTPS URLs in seconds. Agent-native (MCP), scale-to-zero, persistent storage, share-by-link.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "smallcloud": "./bin/smallcloud.js",
+    "smallcloud-mcp": "./bin/smallcloud-mcp.js"
+  },
+  "files": [
+    "bin/",
+    "scripts/",
+    "assets/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "self-hosted",
+    "paas",
+    "deploy",
+    "docker",
+    "mcp",
+    "ai-agents",
+    "magic-link",
+    "sandbox"
+  ],
+  "homepage": "https://smallcloud.osita.ai",
+  "scripts": {
+    "bundle": "node build.mjs"
+  }
+}

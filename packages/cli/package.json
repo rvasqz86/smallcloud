@@ -1,0 +1,19 @@
+{
+  "name": "@smallcloud/cli",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "smallcloud": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "@smallcloud/control-plane": "workspace:*",
+    "@smallcloud/shared": "workspace:*"
+  }
+}
