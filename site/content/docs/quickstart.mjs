@@ -32,6 +32,7 @@ export default {
 <p>One command on your server:</p>
 <pre><code>npm install -g @rvasqz86/smallcloud</code></pre>
 <p>That installs the <code>smallcloud</code> CLI (and <code>smallcloud-mcp</code> for AI agents). This step sets up the <em>Smallcloud platform</em> on your server, once. Your own apps live anywhere else — you'll point <code>smallcloud deploy</code> at them in a moment.</p>
+<p><strong>Permission error (EACCES)?</strong> You're installing into a root-owned system Node. Don't reach for sudo — use a user-owned Node 22 via <a href="https://github.com/nvm-sh/nvm">nvm</a> (<code>nvm install 22</code>), which also satisfies Smallcloud's Node&nbsp;22 requirement. System Node 20 fails at runtime even with sudo.</p>
 <p>Set your domain once in <code>~/.smallcloud/config.json</code>:</p>
 <pre><code>{ "email": "&lt;your-email&gt;", "baseDomain": "example.com" }</code></pre>
 

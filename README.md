@@ -119,6 +119,7 @@ Apps idle for 15 minutes are stopped automatically. The next request wakes them 
 
 ## Troubleshooting
 
+- **`EACCES` on install?** — you are on a root-owned system Node. Use a user-owned Node 22 via nvm (`nvm install 22`) instead of sudo; Node ≥22 is required at runtime anyway.
 - **"Where's my magic link?"** — printed by whatever issued it: your `deploy` output, or `docker logs sc-auth-proxy` for links requested via an app's `/_sc/login` form.
 - **403 "You don't have access"** — you're signed in but have no role on that app; ask the owner for a share link.
 - **App misbehaving?** — `smallcloud logs <app>`; remember the sandbox: no egress, writable paths are only `/tmp` and `/data`.
