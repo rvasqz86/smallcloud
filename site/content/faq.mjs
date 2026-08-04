@@ -36,6 +36,10 @@ const faqs = [
     a: "Install it from npm: npm install -g @rvasqz86/smallcloud. That gives you the smallcloud CLI and the smallcloud-mcp server for AI agents. The source is public at github.com/rvasqz86/smallcloud under the MIT license.",
   },
   {
+    q: "Do I need Cloudflare?",
+    a: "No. Smallcloud needs a wildcard DNS record (*.yourdomain.com pointing at your server) from any DNS provider, with ports 80 and 443 reachable. The caddy reverse proxy obtains and renews Let's Encrypt certificates automatically per app hostname. Cloudflare's free tier is an optional hardening layer — edge TLS, hidden origin IP, DDoS absorption — not a requirement.",
+  },
+  {
     q: "What are the infrastructure requirements?",
     a: "One Linux server with Docker, a caddy-docker-proxy ingress (Coolify installs have this already), wildcard DNS for a domain, and Node.js 22 with pnpm.",
   },
