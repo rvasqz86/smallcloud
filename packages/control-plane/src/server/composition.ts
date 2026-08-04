@@ -11,6 +11,25 @@ import { Deployer } from "./deployer.js";
 
 /** v0 composition constants shared by every local client (CLI, MCP server). */
 export const DEFAULT_BASE_DOMAIN = "osita.ai";
+
+/**
+ * The base domain is per-installation — there is no sane default. Fail with
+ * a recipe instead of silently minting hostnames on someone else's domain.
+ */
+export function requireBaseDomain(): string {
+  const domain = loadConfig().baseDomain;
+  if (domain) return domain;
+  throw new Error(
+    `No baseDomain configured. Smallcloud apps live at sc-<app>.<your-domain>.\n` +
+      `Set it in ${join(smallcloudHome(), "config.json")}:\n` +
+      `  { "baseDomain": "example.com" }\n` +
+      `Options if you don't own a domain:\n` +
+      `  - free: duckdns.org — claim yourname.duckdns.org, point it at this server,\n` +
+      `    use "baseDomain": "yourname.duckdns.org" (HTTPS works automatically)\n` +
+      `  - testing only: "baseDomain": "<server-ip-with-dashes>.sslip.io"\n` +
+      `  - or buy any domain and add a wildcard record (*.example.com -> this server)`,
+  );
+}
 export const APP_NETWORK = "smallcloud-apps";
 export const AUTH_PROXY_CONTAINER = "sc-auth-proxy";
 export const AUTH_PROXY_ORIGIN = `http://${AUTH_PROXY_CONTAINER}:7777`;
@@ -94,7 +113,7 @@ export function createLocalDeployer(): Deployer {
   return new Deployer({
     db,
     runtime: new DockerRuntime(),
-    baseDomain: loadConfig().baseDomain ?? DEFAULT_BASE_DOMAIN,
+    baseDomain: requireBaseDomain(),
     network: APP_NETWORK,
     authProxyOrigin: AUTH_PROXY_ORIGIN,
   });
@@ -117,7 +136,7 @@ export async function ensureEnvironment(): Promise<{ authProxyStarted: boolean }
     appNetwork: APP_NETWORK,
   });
   const config = loadConfig();
-  const baseDomain = config.baseDomain ?? DEFAULT_BASE_DOMAIN;
+  const baseDomain = requireBaseDomain();
   const authProxyStarted = await ensureAuthProxyRunning({
     name: AUTH_PROXY_CONTAINER,
     repoDir: repoDir(),

@@ -84,6 +84,7 @@ export {
   AUTH_PROXY_NETWORKS,
   AUTH_PROXY_ORIGIN,
   DEFAULT_BASE_DOMAIN,
+  requireBaseDomain,
   appKitFile,
   createLocalDeployer,
   dataDir,

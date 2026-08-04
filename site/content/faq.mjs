@@ -36,6 +36,10 @@ const faqs = [
     a: "Install it from npm: npm install -g @rvasqz86/smallcloud. That gives you the smallcloud CLI and the smallcloud-mcp server for AI agents. The source is public at github.com/rvasqz86/smallcloud under the MIT license.",
   },
   {
+    q: "What if I don't have a domain?",
+    a: "Use DuckDNS for free: claim yourname.duckdns.org, point it at your server, and set baseDomain to yourname.duckdns.org — HTTPS works automatically because Let's Encrypt treats each DuckDNS subdomain as its own domain. For quick local testing, sslip.io maps any IP to hostnames with zero setup (but without reliable browser-trusted certificates). Owning a cheap domain with one wildcard record remains the best long-term setup.",
+  },
+  {
     q: "Do I need Cloudflare?",
     a: "No. Smallcloud needs a wildcard DNS record (*.yourdomain.com pointing at your server) from any DNS provider, with ports 80 and 443 reachable. The caddy reverse proxy obtains and renews Let's Encrypt certificates automatically per app hostname. Cloudflare's free tier is an optional hardening layer — edge TLS, hidden origin IP, DDoS absorption — not a requirement.",
   },

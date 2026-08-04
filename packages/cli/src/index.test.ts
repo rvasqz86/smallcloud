@@ -2,6 +2,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { parseCli, sanitizeAppName } from "./args.js";
+import { requireBaseDomain } from "@smallcloud/control-plane";
 import { loadConfig, saveConfig, smallcloudHome } from "./config.js";
 import { run } from "./index.js";
 
@@ -117,5 +118,14 @@ describe("config", () => {
     expect(loadConfig()).toEqual({});
     saveConfig({ email: "a@b.c" });
     expect(loadConfig()).toEqual({ email: "a@b.c" });
+  });
+
+  it("refuses to operate without a configured baseDomain, with a recipe", () => {
+    tempHome = mkdtempSync(join(process.cwd(), ".sc-test-home-"));
+    process.env["SMALLCLOUD_HOME"] = tempHome;
+
+    expect(() => requireBaseDomain()).toThrow(/duckdns/);
+    saveConfig({ baseDomain: "example.com" });
+    expect(requireBaseDomain()).toBe("example.com");
   });
 });
