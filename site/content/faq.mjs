@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "Where do I get Smallcloud?",
-    a: "Install it from npm: npm install -g @rvasqz86/smallcloud. That gives you the smallcloud CLI and the smallcloud-mcp server for AI agents. The source is public at github.com/rvasqz86/smallcloud under the MIT license.",
+    a: "Install it from npm: npm install -g @onsmallcloud/smallcloud. That gives you the smallcloud CLI and the smallcloud-mcp server for AI agents. The source is public at github.com/rvasqz86/smallcloud under the MIT license.",
   },
   {
     q: "What if I don't have a domain?",

@@ -15,7 +15,7 @@ export default {
 
 <h2>v3.1 — Public release on npm <small>· 2026-08-03</small></h2>
 <ul>
-  <li><strong>Smallcloud is installable</strong>: <code>npm install -g @rvasqz86/smallcloud</code> — the CLI and MCP server, MIT-licensed, self-contained.</li>
+  <li><strong>Smallcloud is installable</strong>: <code>npm install -g @onsmallcloud/smallcloud</code> — the CLI and MCP server, MIT-licensed, self-contained.</li>
   <li>The platform no longer requires a source checkout: services run from the installed package.</li>
 </ul>
 

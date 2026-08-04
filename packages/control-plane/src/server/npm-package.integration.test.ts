@@ -23,13 +23,13 @@ beforeAll(() => {
   rmSync(APP_DIR, { recursive: true, force: true });
   run("node", [join(PKG, "build.mjs")]);
   run("npm", ["pack", "--silent"], PKG);
-  run("npm", ["install", "-g", "--prefix", PREFIX, join(PKG, "rvasqz86-smallcloud-0.2.0.tgz")]);
+  run("npm", ["install", "-g", "--prefix", PREFIX, join(PKG, "onsmallcloud-smallcloud-0.2.0.tgz")]);
 }, 300_000);
 
 afterAll(() => {
   rmSync(PREFIX, { recursive: true, force: true });
   rmSync(APP_DIR, { recursive: true, force: true });
-  rmSync(join(PKG, "rvasqz86-smallcloud-0.2.0.tgz"), { force: true });
+  rmSync(join(PKG, "onsmallcloud-smallcloud-0.2.0.tgz"), { force: true });
 }, 60_000);
 
 describe("npm-installed smallcloud", () => {
@@ -49,13 +49,13 @@ describe("npm-installed smallcloud", () => {
   });
 
   it("ships self-contained service entrypoints under the package root", () => {
-    const root = join(PREFIX, "lib/node_modules/@rvasqz86/smallcloud");
+    const root = join(PREFIX, "lib/node_modules/@onsmallcloud/smallcloud");
     for (const entry of ["authproxy-entry.mjs", "waker-entry.mjs", "egress-entry.mjs"]) {
       expect(existsSync(join(root, "scripts", entry))).toBe(true);
     }
     // self-contained = no imports reaching outside the file
     const bundled = run("node", ["-e", `
-      const s = require("node:fs").readFileSync("${join(PREFIX, "lib/node_modules/@rvasqz86/smallcloud/scripts/authproxy-entry.mjs")}", "utf8");
+      const s = require("node:fs").readFileSync("${join(PREFIX, "lib/node_modules/@onsmallcloud/smallcloud/scripts/authproxy-entry.mjs")}", "utf8");
       console.log(/from "\\.\\.\\/packages/.test(s) ? "external-imports" : "self-contained");
     `]);
     expect(bundled.trim()).toBe("self-contained");

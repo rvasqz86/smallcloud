@@ -10,7 +10,7 @@ export default {
     description:
       "Install Smallcloud on a Linux server and deploy a static site or Node.js app to a private HTTPS URL.",
     step: [
-      { "@type": "HowToStep", name: "Install", text: "Run npm install -g @rvasqz86/smallcloud on your server to get the smallcloud CLI." },
+      { "@type": "HowToStep", name: "Install", text: "Run npm install -g @onsmallcloud/smallcloud on your server to get the smallcloud CLI." },
       { "@type": "HowToStep", name: "Configure", text: "Set your email and base domain in ~/.smallcloud/config.json." },
       { "@type": "HowToStep", name: "Deploy", text: "Run smallcloud deploy in any app directory. The first deploy boots Smallcloud's services automatically." },
       { "@type": "HowToStep", name: "Sign in", text: "Open the printed single-use sign-in link. Your app is live, private, and shareable." },
@@ -30,7 +30,7 @@ export default {
 
 <h2>Install</h2>
 <p>One command on your server:</p>
-<pre><code>npm install -g @rvasqz86/smallcloud</code></pre>
+<pre><code>npm install -g @onsmallcloud/smallcloud</code></pre>
 <p>That installs the <code>smallcloud</code> CLI (and <code>smallcloud-mcp</code> for AI agents). This step sets up the <em>Smallcloud platform</em> on your server, once. Your own apps live anywhere else — you'll point <code>smallcloud deploy</code> at them in a moment.</p>
 <p><strong>Permission error (EACCES)?</strong> You're installing into a root-owned system Node. Don't reach for sudo — use a user-owned Node 22 via <a href="https://github.com/nvm-sh/nvm">nvm</a> (<code>nvm install 22</code>), which also satisfies Smallcloud's Node&nbsp;22 requirement. System Node 20 fails at runtime even with sudo.</p>
 <p>Then give your server a domain — the zero-setup way:</p>

@@ -30,7 +30,7 @@ Smallcloud v0 runs on a single self-hosted Linux box that already has:
 ## Install
 
 ```bash
-npm install -g @rvasqz86/smallcloud
+npm install -g @onsmallcloud/smallcloud
 ```
 
 That's it — you get the `smallcloud` CLI and the `smallcloud-mcp` server. (Building from source instead: clone the repo, `pnpm install && pnpm build`, and alias `packages/cli/dist/index.js`.)
@@ -134,7 +134,7 @@ pnpm test    # unit + integration suite (uses local docker)
 pnpm smoke   # full end-to-end against the live environment, incl. wake test
 ```
 
-Architecture notes and guides live on the [Smallcloud site](https://onsmallcloud.com) — see the [docs](https://onsmallcloud.com/docs/quickstart.html) and [FAQ](https://onsmallcloud.com/faq.html).
+Architecture and every significant decision live in [`DECISIONS.md`](DECISIONS.md), [`INFRA.md`](INFRA.md), and [`CHARTER.md`](CHARTER.md).
 
 ## License
 

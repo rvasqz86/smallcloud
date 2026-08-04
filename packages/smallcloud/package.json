@@ -1,5 +1,5 @@
 {
-  "name": "@rvasqz86/smallcloud",
+  "name": "@onsmallcloud/smallcloud",
   "version": "0.2.0",
   "publishConfig": {
     "access": "public"

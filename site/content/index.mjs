@@ -39,7 +39,7 @@ export default {
 <section>
   <h2>How do I deploy an app with Smallcloud?</h2>
   <ol>
-    <li>On a Linux box running Docker and a caddy-docker-proxy ingress: <code>npm install -g @rvasqz86/smallcloud</code></li>
+    <li>On a Linux box running Docker and a caddy-docker-proxy ingress: <code>npm install -g @onsmallcloud/smallcloud</code></li>
     <li>Run <code>smallcloud new my-app</code> to scaffold, or use any existing app directory of yours.</li>
     <li>Run <code>smallcloud deploy --email &lt;your-email&gt;</code> in that directory.</li>
     <li>Open the printed sign-in link — your app is live, private, and shareable.</li>
