@@ -24,8 +24,9 @@ export function requireBaseDomain(): string {
       `Set it in ${join(smallcloudHome(), "config.json")}:\n` +
       `  { "baseDomain": "example.com" }\n` +
       `Options if you don't own a domain:\n` +
-      `  - free: duckdns.org — claim yourname.duckdns.org, point it at this server,\n` +
-      `    use "baseDomain": "yourname.duckdns.org" (HTTPS works automatically)\n` +
+      `  - fastest: claim a free subdomain right now:\n` +
+      `      smallcloud domain claim <yourname>   ->  yourname.onsmallcloud.com\n` +
+      `  - free DIY: duckdns.org — claim yourname.duckdns.org, point it at this server\n` +
       `  - testing only: "baseDomain": "<server-ip-with-dashes>.sslip.io"\n` +
       `  - or buy any domain and add a wildcard record (*.example.com -> this server)`,
   );
@@ -45,6 +46,12 @@ export interface LocalConfig {
   resendApiKey?: string;
   /** Verified sender, e.g. "Smallcloud <signin@yourdomain.com>". */
   mailFrom?: string;
+  /** Set by `smallcloud domain claim`: the claimed subdomain label. */
+  domainName?: string;
+  /** Claim token for re-pointing DNS (dynamic IP). */
+  domainToken?: string;
+  /** Claim service the domain came from. */
+  domainService?: string;
 }
 
 export function smallcloudHome(): string {

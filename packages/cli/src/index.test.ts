@@ -67,6 +67,18 @@ describe("parseCli", () => {
     expect(parseCli(["unshare", "todo"]).kind).toBe("error");
   });
 
+  it("parses domain claim and update-ip", () => {
+    expect(parseCli(["domain", "claim", "alice"])).toEqual({ kind: "domain-claim", name: "alice" });
+    expect(parseCli(["domain", "claim", "alice", "--service", "https://x.y"])).toEqual({
+      kind: "domain-claim",
+      name: "alice",
+      service: "https://x.y",
+    });
+    expect(parseCli(["domain", "update-ip"])).toEqual({ kind: "domain-update-ip" });
+    expect(parseCli(["domain"]).kind).toBe("error");
+    expect(parseCli(["domain", "claim"]).kind).toBe("error");
+  });
+
   it("parses backup and audit", () => {
     expect(parseCli(["backup"])).toEqual({ kind: "backup" });
     expect(parseCli(["audit"])).toEqual({ kind: "audit", tail: 50 });

@@ -9,6 +9,8 @@ export type CliCommand =
   | { kind: "unshare"; name: string; email: string }
   | { kind: "list" }
   | { kind: "new"; dir: string; template: "static" | "node" | "kv" }
+  | { kind: "domain-claim"; name: string; service?: string }
+  | { kind: "domain-update-ip" }
   | { kind: "backup" }
   | { kind: "audit"; tail: number }
   | { kind: "doctor" }
@@ -104,6 +106,22 @@ export function parseCli(argv: string[]): CliCommand {
 
   if (command === "list") return { kind: "list" };
   if (command === "backup") return { kind: "backup" };
+
+  if (command === "domain") {
+    if (rest[0] === "claim") {
+      const name = rest[1];
+      if (!name || name.startsWith("-")) {
+        return { kind: "error", message: "Usage: smallcloud domain claim <name> [--service url]" };
+      }
+      if (rest[2] === "--service") {
+        if (!rest[3]) return { kind: "error", message: "--service requires a URL" };
+        return { kind: "domain-claim", name, service: rest[3] };
+      }
+      return { kind: "domain-claim", name };
+    }
+    if (rest[0] === "update-ip") return { kind: "domain-update-ip" };
+    return { kind: "error", message: "Usage: smallcloud domain claim <name> | domain update-ip" };
+  }
 
   if (command === "new") {
     const dir = rest[0];

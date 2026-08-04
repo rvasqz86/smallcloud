@@ -62,6 +62,22 @@ export {
 } from "./server/egress.js";
 export { ensureEgressRunning, type EgressRunConfig } from "./server/authproxy.js";
 export {
+  DEFAULT_CLAIM_SERVICE,
+  claimDomain,
+  updateDomainIp,
+  type ClaimedDomain,
+} from "./server/domainclient.js";
+export {
+  RESERVED_SUBDOMAINS,
+  createCloudflareDns,
+  handleClaim,
+  handleUpdate,
+  openDomainsDb,
+  validateSubdomain,
+  type ClaimResult,
+  type DnsClient,
+} from "./server/domains.js";
+export {
   createMailSender,
   deliverLoginLink,
   type LinkDelivery,

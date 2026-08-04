@@ -6,6 +6,7 @@ import { join } from "node:path";
 import {
   DetectionError,
   DockerRuntime,
+  claimDomain,
   createLocalDeployer,
   createShareLink,
   dataDir,
@@ -18,6 +19,7 @@ import {
   revokeGrant,
   runBackup,
   runDoctor,
+  updateDomainIp,
   saveConfig,
   type Deployer,
 } from "@smallcloud/control-plane";
@@ -29,6 +31,8 @@ export const CLI_NAME = "smallcloud";
 const USAGE = `Usage: smallcloud <command>
 
 Commands:
+  domain claim <name>
+            Claim a free <name>.onsmallcloud.com pointing at this server
   new <dir> [--template static|node|kv]
             Scaffold a ready-to-deploy app (kv = node + persistent storage)
   deploy [dir] [--name <app>] [--email <you@example.com>] [--allow-egress host1,host2]
@@ -212,6 +216,20 @@ function cmdAudit(tail: number): number {
   return 0;
 }
 
+async function cmdDomainClaim(name: string, service?: string): Promise<number> {
+  const claimed = await claimDomain(name, service);
+  out(`✓ Claimed ${claimed.domain} — it now points at this server`);
+  out(`  baseDomain saved to config; apps will live at sc-<app>.${claimed.domain}`);
+  out(`  If this server's IP ever changes:  smallcloud domain update-ip`);
+  return 0;
+}
+
+async function cmdDomainUpdateIp(): Promise<number> {
+  const domain = await updateDomainIp();
+  out(`✓ ${domain} re-pointed at this server's current IP`);
+  return 0;
+}
+
 async function cmdDoctor(): Promise<number> {
   const icons = { ok: "✓", healed: "✚", warn: "!", fail: "✗" } as const;
   const report = await runDoctor({
@@ -276,6 +294,10 @@ export async function run(argv: string[]): Promise<number> {
         return cmdAudit(command.tail);
       case "doctor":
         return await cmdDoctor();
+      case "domain-claim":
+        return await cmdDomainClaim(command.name, command.service);
+      case "domain-update-ip":
+        return await cmdDomainUpdateIp();
     }
   } catch (error) {
     if (error instanceof DetectionError) {
