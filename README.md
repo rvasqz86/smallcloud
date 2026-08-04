@@ -134,7 +134,7 @@ pnpm test    # unit + integration suite (uses local docker)
 pnpm smoke   # full end-to-end against the live environment, incl. wake test
 ```
 
-Architecture and every significant decision live in [`DECISIONS.md`](https://onsmallcloud.com), [`INFRA.md`](https://onsmallcloud.com/docs/quickstart.html), and [`CHARTER.md`](https://onsmallcloud.com/faq.html).
+Architecture notes and guides live on the [Smallcloud site](https://onsmallcloud.com) — see the [docs](https://onsmallcloud.com/docs/quickstart.html) and [FAQ](https://onsmallcloud.com/faq.html).
 
 ## License
 
