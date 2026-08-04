@@ -10,7 +10,7 @@ import { join } from "node:path";
 const REPO = new URL("..", import.meta.url).pathname;
 const CONTENT = join(REPO, "site/content");
 const DIST = join(REPO, "site/dist");
-export const SITE_ORIGIN = "https://smallcloud.osita.ai";
+export const SITE_ORIGIN = "https://onsmallcloud.com";
 
 const CSS = `
 :root { --ink: #16181d; --muted: #5a6270; --accent: #0b6bcb; --bg: #ffffff; --card: #f5f7fa; }
@@ -153,7 +153,7 @@ ${pages.map((p) => `  <url><loc>${SITE_ORIGIN}${pagePath(p)}</loc></url>`).join(
     layout({
       slug: "404",
       title: "Page not found — Smallcloud",
-      description: "That page does not exist on smallcloud.osita.ai.",
+      description: "That page does not exist on onsmallcloud.com.",
       body: `<h1>404 — no such page</h1><p>Try the <a href="/">homepage</a> or the <a href="/docs/quickstart.html">quickstart</a>.</p>`,
     }),
   );

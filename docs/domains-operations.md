@@ -41,7 +41,7 @@ How (operator actions, ~15 min + review wait):
    **PRIVATE DOMAINS** section (alphabetical):
 
    ```
-   // Smallcloud : https://smallcloud.osita.ai
+   // Smallcloud : https://onsmallcloud.com
    // Submitted by <operator email>
    onsmallcloud.com
    ```

@@ -28,7 +28,7 @@ describe("public site build", () => {
 
     expect(index).toContain("<title>Smallcloud — deploy small software");
     expect(index).toContain('meta name="description"');
-    expect(index).toContain('rel="canonical" href="https://smallcloud.osita.ai/"');
+    expect(index).toContain('rel="canonical" href="https://onsmallcloud.com/"');
     expect(index).toContain('lang="en"');
     expect(index).toContain("Private by default");
 
@@ -39,15 +39,15 @@ describe("public site build", () => {
   it("emits valid SEO furniture: sitemap, robots, 404, JSON-LD, OG", { timeout: 60_000 }, () => {
     build();
     const sitemap = readFileSync(join(DIST, "sitemap.xml"), "utf8");
-    expect(sitemap).toContain("<loc>https://smallcloud.osita.ai/</loc>");
-    expect(sitemap).toContain("<loc>https://smallcloud.osita.ai/docs/quickstart.html</loc>");
+    expect(sitemap).toContain("<loc>https://onsmallcloud.com/</loc>");
+    expect(sitemap).toContain("<loc>https://onsmallcloud.com/docs/quickstart.html</loc>");
 
-    expect(readFileSync(join(DIST, "robots.txt"), "utf8")).toContain("Sitemap: https://smallcloud.osita.ai/sitemap.xml");
+    expect(readFileSync(join(DIST, "robots.txt"), "utf8")).toContain("Sitemap: https://onsmallcloud.com/sitemap.xml");
     expect(readFileSync(join(DIST, "404.html"), "utf8")).toContain("404 — no such page");
 
     const index = readFileSync(join(DIST, "index.html"), "utf8");
     expect(index).toContain('property="og:title"');
-    expect(index).toContain('property="og:image" content="https://smallcloud.osita.ai/og.png"');
+    expect(index).toContain('property="og:image" content="https://onsmallcloud.com/og.png"');
     expect(index).toContain('name="twitter:card" content="summary_large_image"');
     const png = readFileSync(join(DIST, "og.png"));
     expect(png.subarray(1, 4).toString()).toBe("PNG");
@@ -76,7 +76,7 @@ describe("public site build", () => {
     const llms = readFileSync(join(DIST, "llms.txt"), "utf8");
     expect(llms).toContain("# Smallcloud");
     expect(llms).toContain("llms-full.txt");
-    expect(llms).toContain("https://smallcloud.osita.ai/docs/quickstart.html");
+    expect(llms).toContain("https://onsmallcloud.com/docs/quickstart.html");
 
     const full = readFileSync(join(DIST, "llms-full.txt"), "utf8");
     expect(full).toContain("Frequently asked questions");

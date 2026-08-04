@@ -11,7 +11,7 @@ export default {
     operatingSystem: "Linux",
     description:
       "Self-hosted platform that deploys static sites and Node.js apps to private, sandboxed, HTTPS URLs in about a second. Agent-native via MCP, scale-to-zero, persistent storage, share-by-link.",
-    url: "https://smallcloud.osita.ai",
+    url: "https://onsmallcloud.com",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   },
   body: `

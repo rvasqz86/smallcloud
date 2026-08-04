@@ -95,5 +95,5 @@ ${
 ${rows}
 </table>`
 }
-<p><small>Apps you have no role on need a share link from their owner. New here? Read the <a href="https://smallcloud.osita.ai/docs/quickstart.html">quickstart</a>.</small></p>`;
+<p><small>Apps you have no role on need a share link from their owner. New here? Read the <a href="https://onsmallcloud.com/docs/quickstart.html">quickstart</a>.</small></p>`;
 }

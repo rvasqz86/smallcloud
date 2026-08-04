@@ -61,7 +61,7 @@ http
         service: "smallcloud-domains",
         base: BASE,
         claim: `POST /claim {"name":"yourname"} → free yourname.${BASE} pointing at your server`,
-        docs: "https://smallcloud.osita.ai/docs/quickstart.html",
+        docs: "https://onsmallcloud.com/docs/quickstart.html",
       });
       return;
     }

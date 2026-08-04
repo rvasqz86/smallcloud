@@ -134,7 +134,7 @@ pnpm test    # unit + integration suite (uses local docker)
 pnpm smoke   # full end-to-end against the live environment, incl. wake test
 ```
 
-Design citations in code comments (D-numbers) refer to the project's internal decision log.
+Architecture and every significant decision live in [`DECISIONS.md`](https://onsmallcloud.com), [`INFRA.md`](https://onsmallcloud.com/docs/quickstart.html), and [`CHARTER.md`](https://onsmallcloud.com/faq.html).
 
 ## License
 

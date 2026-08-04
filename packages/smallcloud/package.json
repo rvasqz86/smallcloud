@@ -30,7 +30,7 @@
     "magic-link",
     "sandbox"
   ],
-  "homepage": "https://smallcloud.osita.ai",
+  "homepage": "https://onsmallcloud.com",
   "scripts": {
     "bundle": "node build.mjs"
   },
