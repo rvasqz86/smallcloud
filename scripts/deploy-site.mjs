@@ -34,6 +34,9 @@ await runtime.runContainer({
     "caddy_0.reverse_proxy": "{{upstreams 8080}}",
     "caddy_0.encode": "zstd gzip",
     "caddy_0.header": "-Server",
+    // the claim-domain apex is brand surface: send the curious to the site
+    caddy_1: "https://onsmallcloud.com, https://www.onsmallcloud.com",
+    "caddy_1.redir": `https://${HOST}{uri} permanent`,
     caddy_ingress_network: "coolify",
     "smallcloud.site": "www",
   },
