@@ -24,7 +24,7 @@ export default {
 <ul>
   <li>A Linux server with <strong>Docker</strong> installed.</li>
   <li><a href="https://github.com/lucaslorentz/caddy-docker-proxy">caddy-docker-proxy</a> as the reverse proxy, discovering routes from container labels (Coolify installs ship this by default).</li>
-  <li><strong>Wildcard DNS</strong> for a domain pointed at the server (<code>*.example.com</code> — any DNS provider; Cloudflare optional). TLS is automatic via Let's Encrypt.</li>
+  <li><strong>A domain</strong> — or not: <code>smallcloud domain claim yourname</code> gets you a free <code>yourname.onsmallcloud.com</code> pointed at your server, no DNS knowledge needed. Bringing your own domain = one wildcard record (<code>*.example.com</code>, any provider); TLS is automatic via Let's Encrypt either way.</li>
   <li><strong>Node.js 22</strong> and <strong>pnpm</strong> (<code>corepack enable pnpm</code>).</li>
 </ul>
 
@@ -33,8 +33,9 @@ export default {
 <pre><code>npm install -g @rvasqz86/smallcloud</code></pre>
 <p>That installs the <code>smallcloud</code> CLI (and <code>smallcloud-mcp</code> for AI agents). This step sets up the <em>Smallcloud platform</em> on your server, once. Your own apps live anywhere else — you'll point <code>smallcloud deploy</code> at them in a moment.</p>
 <p><strong>Permission error (EACCES)?</strong> You're installing into a root-owned system Node. Don't reach for sudo — use a user-owned Node 22 via <a href="https://github.com/nvm-sh/nvm">nvm</a> (<code>nvm install 22</code>), which also satisfies Smallcloud's Node&nbsp;22 requirement. System Node 20 fails at runtime even with sudo.</p>
-<p>Set your domain once in <code>~/.smallcloud/config.json</code>:</p>
-<pre><code>{ "email": "&lt;your-email&gt;", "baseDomain": "example.com" }</code></pre>
+<p>Then give your server a domain — the zero-setup way:</p>
+<pre><code>smallcloud domain claim yourname   # free yourname.onsmallcloud.com, config written for you</code></pre>
+<p>Or bring your own: set it once in <code>~/.smallcloud/config.json</code> as <code>{ "baseDomain": "example.com" }</code> (you can switch from a claimed subdomain to your own domain anytime — it's just this one config line).</p>
 
 <h2>Deploy your first app</h2>
 <pre><code>smallcloud new hello --template kv   # or: static, node

@@ -6,6 +6,13 @@ export default {
   body: `
 <h1>Changelog</h1>
 
+<h2>v3.2 — Free subdomains <small>· 2026-08-04</small></h2>
+<ul>
+  <li><strong>smallcloud domain claim yourname</strong> — a free <code>yourname.onsmallcloud.com</code> pointed at your server, claimed and configured in one command. No domain purchase, no DNS knowledge.</li>
+  <li><code>smallcloud domain update-ip</code> re-points your subdomain if your server's IP changes.</li>
+  <li>No lock-in: switching to your own domain is one config line.</li>
+</ul>
+
 <h2>v3.1 — Public release on npm <small>· 2026-08-03</small></h2>
 <ul>
   <li><strong>Smallcloud is installable</strong>: <code>npm install -g @rvasqz86/smallcloud</code> — the CLI and MCP server, MIT-licensed, self-contained.</li>

@@ -77,6 +77,17 @@ export async function runDoctor(options: DoctorOptions): Promise<DoctorReport> {
     }
   }
 
+  // 2b. optional operator services (present only on hosts that run them)
+  for (const optional of ["sc-egress", "sc-www", "sc-domains"]) {
+    const state = await containerState(optional);
+    if (state === "missing") continue;
+    checks.push({
+      name: `service:${optional}`,
+      status: state === "running" ? "ok" : "warn",
+      message: state === "running" ? "running" : `state: ${state} — docker start ${optional}`,
+    });
+  }
+
   // 3. app consistency — stopped app containers are fine (scale-to-zero),
   //    but a running app needs its container + anchor, and strays get flagged
   const apps = listApps(options.db);

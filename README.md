@@ -35,7 +35,7 @@ npm install -g @rvasqz86/smallcloud
 
 That's it — you get the `smallcloud` CLI and the `smallcloud-mcp` server. (Building from source instead: clone the repo, `pnpm install && pnpm build`, and alias `packages/cli/dist/index.js`.)
 
-If your base domain is not the default, set it once in `~/.smallcloud/config.json`:
+No domain? `smallcloud domain claim yourname` gets you a free `yourname.onsmallcloud.com` pointed at this server, config included. Bringing your own, set it once in `~/.smallcloud/config.json`:
 
 ```json
 {
@@ -70,6 +70,8 @@ Recipients sign in once (magic link), then open your share link — after that t
 
 | Command | What it does |
 |---|---|
+| `smallcloud domain claim <name>` | Free `<name>.onsmallcloud.com` pointed at this server, config written |
+| `smallcloud domain update-ip` | Re-point your claimed subdomain after an IP change |
 | `smallcloud deploy [dir] [--name x] [--email e]` | Build, sandbox, and serve an app at `https://sc-<name>.<domain>` |
 | `smallcloud list` | All apps with status and URL |
 | `smallcloud status <app>` | Latest deployment of one app |

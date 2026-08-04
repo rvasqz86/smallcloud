@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "What if I don't have a domain?",
-    a: "Use DuckDNS for free: claim yourname.duckdns.org, point it at your server, and set baseDomain to yourname.duckdns.org — HTTPS works automatically because Let's Encrypt treats each DuckDNS subdomain as its own domain. For quick local testing, sslip.io maps any IP to hostnames with zero setup (but without reliable browser-trusted certificates). Owning a cheap domain with one wildcard record remains the best long-term setup.",
+    a: "Run smallcloud domain claim yourname — you get a free yourname.onsmallcloud.com pointing at your server, with the config written automatically and HTTPS handled by your own caddy. Your apps live at sc-app.yourname.onsmallcloud.com. If your server's IP changes, smallcloud domain update-ip re-points it. You can switch to your own domain later with a single config line, so there's no lock-in. DuckDNS and sslip.io remain DIY alternatives.",
   },
   {
     q: "Do I need Cloudflare?",
