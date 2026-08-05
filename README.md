@@ -1,6 +1,8 @@
 # Smallcloud — cloud for small software
 
-Deploy a static site or a small Node web app from your terminal to a **private, HTTPS, magic-link-protected URL** in about a second:
+Deploy a static site or a small Node web app from your terminal to a **private, HTTPS, magic-link-protected URL** in about a second — on hardware you already own:
+
+<img src="https://onsmallcloud.com/demo.svg" width="700" alt="Terminal recording: smallcloud deploy, share, and scale-to-zero wake in about 20 seconds">
 
 ```
 $ smallcloud deploy
@@ -9,7 +11,7 @@ $ smallcloud deploy
   Sign in  https://sc-my-app.osita.ai/_sc/auth?token=…
 ```
 
-Every app is sandboxed, private by default, shareable by link, persistent, and scales to zero when idle. Agents are first-class citizens: Claude Code can deploy, inspect, and delete apps through the bundled MCP server.
+Every app is sandboxed, private by default, shareable by link, persistent, and scales to zero when idle. Agents are first-class citizens: Claude Code can deploy, inspect, and delete apps through the bundled MCP server. Free and MIT-licensed forever — [Pro](https://onsmallcloud.com/pricing.html) is optional, for offsite backups and priority support.
 
 ## Security model (the short version)
 

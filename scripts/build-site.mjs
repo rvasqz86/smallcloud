@@ -39,6 +39,9 @@ p code, li code { background: var(--card); padding: .1em .35em; border-radius: 4
 .btn:hover { opacity: .9; }
 .btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
 a { color: var(--accent); }
+.signup-form { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-top: .75rem; }
+.signup-form input[type=email] { padding: .55rem .75rem; border: 1px solid #d5dae1; border-radius: 8px; font: inherit; width: 16rem; max-width: 100%; }
+.signup-status { color: var(--muted); font-size: .9rem; margin-top: .5rem; min-height: 1.2em; }
 footer { border-top: 1px solid #e7eaee; color: var(--muted); }
 footer div { max-width: 64rem; margin: 0 auto; padding: 1.25rem; font-size: .9rem; }
 `;
@@ -143,6 +146,10 @@ export async function buildSite() {
   // Social card (regenerate with scripts/make-og.mjs when the design changes)
   const ogSource = join(REPO, "site/assets/og.png");
   if (existsSync(ogSource)) copyFileSync(ogSource, join(DIST, "og.png"));
+
+  // Terminal demo (regenerate with scripts/record-demo.sh + svg-term-cli)
+  const demoSource = join(REPO, "site/assets/demo.svg");
+  if (existsSync(demoSource)) copyFileSync(demoSource, join(DIST, "demo.svg"));
 
   // SEO furniture: sitemap, robots, and a branded 404 (served via handle_errors)
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

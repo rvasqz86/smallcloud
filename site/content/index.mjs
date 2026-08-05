@@ -18,6 +18,7 @@ export default {
 <section class="hero">
   <h1>Your own cloud, for small software</h1>
   <p class="lede">Deploy a static site or Node.js app from your terminal to a <strong>private HTTPS URL</strong> in about a second — on hardware you already own. No YAML, no build pipelines, no public-by-accident.</p>
+  <img src="/demo.svg" width="860" height="494" alt="Terminal recording: smallcloud deploy, share, and scale-to-zero wake in about 20 seconds" style="max-width:100%;border-radius:8px;">
   <pre><code>$ smallcloud deploy
 ✓ Deployed my-app in 0.9s
   URL      https://sc-my-app.example.com
