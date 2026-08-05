@@ -32,6 +32,12 @@ p code, li code { background: var(--card); padding: .1em .35em; border-radius: 4
 .card { background: var(--card); border-radius: 10px; padding: 1rem 1.25rem; }
 .card h3 { margin: .25rem 0 .5rem; }
 .card p { margin: 0; color: var(--muted); }
+.card.highlight { outline: 2px solid var(--accent); }
+.card .price { font-size: 1.6rem; font-weight: 700; margin: .5rem 0; }
+.card ul { padding-left: 1.1rem; margin: .75rem 0; color: var(--muted); }
+.btn { display: inline-block; margin-top: .75rem; padding: .55rem 1.1rem; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; }
+.btn:hover { opacity: .9; }
+.btn.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
 a { color: var(--accent); }
 footer { border-top: 1px solid #e7eaee; color: var(--muted); }
 footer div { max-width: 64rem; margin: 0 auto; padding: 1.25rem; font-size: .9rem; }
@@ -67,6 +73,7 @@ function layout(page) {
 <header><nav>
   <a class="brand" href="/">Smallcloud</a>
   <a href="/docs/quickstart.html">Docs</a>
+  <a href="/pricing.html">Pricing</a>
   <a href="/faq.html">FAQ</a>
   <a href="/changelog.html">Changelog</a>
   <a href="https://github.com/rvasqz86/smallcloud">Source</a>
