@@ -8,8 +8,8 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "smallcloud": "./bin/smallcloud.js",
-    "smallcloud-mcp": "./bin/smallcloud-mcp.js"
+    "smallcloud": "bin/smallcloud.js",
+    "smallcloud-mcp": "bin/smallcloud-mcp.js"
   },
   "files": [
     "bin/",
