@@ -1,6 +1,6 @@
 const ANNUAL_URL = "https://buy.polar.sh/polar_cl_w4E2m2n4PptU6xYGYcYciZyqSlboHsAApjodx0DcBH7";
 const LIFETIME_URL = "https://buy.polar.sh/polar_cl_wEC6SqUIduhqYw6o486yyRMVJeug593WXwM3u1EXox5";
-const SETUP_MAILTO = "mailto:pro@onsmallcloud.com?subject=Smallcloud%20setup%20service";
+const SETUP_URL = "https://buy.stripe.com/bJe00j7wF5pC9igh2UcEw01";
 
 export default {
   slug: "pricing",
@@ -66,7 +66,7 @@ export default {
 <section>
   <h2>Done-for-you setup — $99</h2>
   <p>Don't want to run the quickstart yourself? I'll install Smallcloud on your own server, claim your free subdomain, and deploy your first app with you over a screenshare — about 45 minutes. Limited to a couple of bookings a week.</p>
-  <a class="btn secondary" href="${SETUP_MAILTO}">Book a setup session</a>
+  <a class="btn secondary" href="${SETUP_URL}">Book a setup session — $99</a>
 </section>
 
 <section>
