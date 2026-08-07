@@ -9,7 +9,8 @@
  */
 import { execFileSync } from "node:child_process";
 
-const BOT_RE = /bot|crawl|spider|slurp|preview|headless|python-requests|curl|wget|gptbot|claude|anthropic|openai|perplexity|bytespider|undici|^node$/i;
+const BOT_RE =
+  /bot|crawl|spider|slurp|preview|headless|python-requests|curl|wget|gptbot|claude|anthropic|openai|perplexity|bytespider|undici|^node$|go-http-client|okhttp|libwww|java\/|^ruby|axios|node-fetch|postman|insomnia|scrapy|httpclient|winhttp/i;
 
 const header = (req, name) => {
   const headers = req?.headers ?? {};
